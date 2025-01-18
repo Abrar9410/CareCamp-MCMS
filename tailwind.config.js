@@ -19,8 +19,7 @@ export default {
           dark: '#1A202C',  // Dark mode background
         },
         text: {
-          light: '#2D3748', // Light mode text
-          dark: '#FFFFFF',  // Dark mode text
+          light: '#2D3748',
         },
       },
     },

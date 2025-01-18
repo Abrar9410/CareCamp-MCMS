@@ -35,11 +35,10 @@ const ThemeToggler = () => {
 
     return (
         <div>
-            <label className="flex cursor-pointer gap-2">
+            <label className="flex items-center cursor-pointer min-[400px]:gap-1 lg:gap-2">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
+                    className="w-3 h-3 min-[350px]:w-4 min-[350px]:h-4 lg:w-5 lg:h-5"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -50,11 +49,10 @@ const ThemeToggler = () => {
                     <path
                         d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
                 </svg>
-                <input type="checkbox" onChange={toggleTheme} className="toggle" checked={theme==='dark'}/>
+                <input type="checkbox" onChange={toggleTheme} className="toggle w-6 h-3 min-[300px]:w-8 min-[300px]:h-4 min-[350px]:w-10 min-[350px]:h-5 sm:w-12 sm:h-6" checked={theme==='dark'}/>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
+                    className="w-3 h-3 min-[350px]:w-4 min-[350px]:h-4 sm:w-5 sm:h-5"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
