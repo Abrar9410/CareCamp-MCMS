@@ -5,10 +5,10 @@
 
 ## **Technologies used:**
 
-   * React.js
-   * Tailwind CSS
-   * DaisyUI
-   * React-Toastify
+   * 
+   * 
+   * 
+   * 
 
 
 ## **Key Features of the project:**
