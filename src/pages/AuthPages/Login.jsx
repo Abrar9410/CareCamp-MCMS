@@ -73,7 +73,7 @@ const Login = () => {
                     <div className="form-control gap-4 mt-4 items-center">
                         <p className="text-red-600">{errorMessage}</p>
                         <button className="btn btn-primary w-full">Login</button>
-                        <p className="text-center">Don't Have an Account? <Link to="/register" className="text-blue-500">Register</Link></p>
+                        <p className="text-center">Don't Have an Account? <Link to="/signup" className="text-blue-500">Sign Up</Link></p>
                         <p onClick={handleGoogleLogin} className="cursor-pointer hover:scale-105 py-1 px-2 rounded-lg flex justify-center items-center gap-1 bg-[#575757] text-white w-max">
                             <img src={googleLogo} className="w-3 h-3" alt="Google-logo" />
                             <span className="text-xs">Sign in with Google</span>

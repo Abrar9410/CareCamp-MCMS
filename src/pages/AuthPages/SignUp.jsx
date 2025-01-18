@@ -6,7 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 
-const Register = () => {
+const SignUp = () => {
 
     const { setUser, setLoading, loginWithGoogle, createAccount, updateUserProfile } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
@@ -115,4 +115,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default SignUp;

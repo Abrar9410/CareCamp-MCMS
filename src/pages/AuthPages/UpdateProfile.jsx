@@ -1,12 +1,12 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../providers/AuthProvider";
+import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 
 const UpdateProfile = () => {
 
-    const { user, updateUserProfile, setLoading } = useContext(AuthContext);
+    const { user, updateUserProfile, setLoading } = useAuth();
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 

@@ -1,11 +1,34 @@
-import { NavLink } from "react-router-dom";
+import logo from "../../assets/CareCamp_logo.png";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const Navbar = () => {
 
+    const {user, logOut} = useAuth();
+    const navigate = useNavigate();
+
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/">Available Camps</NavLink></li>
+        <li><NavLink to="/">Contact</NavLink></li>
     </>
+
+    const handleLogOut = () => {
+        Swal.fire({
+            title: "Are you sure you want to log out?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, log out!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOut();
+            }
+        });
+    }
 
     return (
         <div className="sticky top-0 z-10 bg-opacity-30 backdrop-blur-md py-2">
@@ -32,14 +55,41 @@ const Navbar = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <Link to="/" className="flex items-center gap-1">
+                        <img src={logo} alt="logo" className="w-12"/>
+                        <span className="text-2xl font-bold">CareCamp</span>
+                    </Link>
                 </div>
                 <div className="hidden sm:flex">
                     <ul className="flex justify-center items-center gap-4">
                         {navLinks}
                     </ul>
                 </div>
-                
+                <div className="flex justify-end items-center gap-2">
+                    <div></div>
+                    {
+                        user?
+                            <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img src={user.photoURL} alt="user" />
+                                    </div>
+                                </div>
+                                <ul
+                                    tabIndex={0}
+                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-max p-2 shadow">
+                                    <li>
+                                        {user?.displayName}
+                                    </li>
+                                    <li><Link>Dashboard</Link></li>
+                                    <li><button onClick={handleLogOut}>Logout</button></li>
+                                </ul>
+                            </div>:
+                            <button onClick={()=>navigate("/login")}>
+                                Join Us
+                            </button>
+                    }
+                </div>
             </div>
         </div>
     );
