@@ -2,6 +2,7 @@ import logo from "../../assets/CareCamp_logo.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import ThemeToggler from "./ThemeToggler";
 
 
 const Navbar = () => {
@@ -31,7 +32,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="sticky top-0 z-10 bg-opacity-30 backdrop-blur-md py-2">
+        <div className="sticky top-0 z-10 bg-opacity-30 backdrop-blur-md py-4">
             <div className="w-11/12 sm:w-10/12 mx-auto flex justify-between items-center">
                 <div className="flex items-center gap-2 sm:gap-0">
                     <div className="dropdown">
@@ -51,22 +52,22 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-max p-2 shadow">
+                            className="menu menu-sm dropdown-content bg-base-100 text-text-light dark:text-text-dark rounded-box z-[1] mt-3 w-max p-2 shadow">
                             {navLinks}
                         </ul>
                     </div>
                     <Link to="/" className="flex items-center gap-1">
                         <img src={logo} alt="logo" className="w-12"/>
-                        <span className="text-2xl font-bold">CareCamp</span>
+                        <span className="font-poppins text-primary text-2xl font-bold">CareCamp</span>
                     </Link>
                 </div>
                 <div className="hidden sm:flex">
-                    <ul className="flex justify-center items-center gap-4">
+                    <ul className="flex justify-center items-center gap-4 text-text-light dark:text-text-dark">
                         {navLinks}
                     </ul>
                 </div>
                 <div className="flex justify-end items-center gap-2">
-                    <div></div>
+                    <ThemeToggler></ThemeToggler>
                     {
                         user?
                             <div className="dropdown dropdown-end">
@@ -85,7 +86,7 @@ const Navbar = () => {
                                     <li><button onClick={handleLogOut}>Logout</button></li>
                                 </ul>
                             </div>:
-                            <button onClick={()=>navigate("/login")}>
+                            <button onClick={()=>navigate("/login")} className="bg-primary">
                                 Join Us
                             </button>
                     }
