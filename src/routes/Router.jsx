@@ -4,6 +4,7 @@ import Login from "../pages/AuthPages/Login";
 import SignUp from "../pages/AuthPages/SignUp";
 import Home from "../pages/PublicPages/Home";
 import AvailableCamps from "../pages/PublicPages/AvailableCamps";
+import Contact from "../pages/PublicPages/Contact";
 
 
 const Router = createBrowserRouter([
@@ -22,6 +23,10 @@ const Router = createBrowserRouter([
             {
                 path: "/camps/:id",
                 element: <AvailableCamps></AvailableCamps>
+            },
+            {
+                path: "/contact",
+                element: <Contact></Contact>
             },
             {
                 path: "/login",
