@@ -80,15 +80,15 @@ const Contact = () => {
                     <div className="flex flex-col gap-4">
                         <p className="w-max text-sm min-[250px]:text-base lg:text-xl flex items-center gap-2">
                             <FaLocationDot />
-                            <span>Chattogram, Bangladesh</span>
+                            <span>Cox's Bazar, Bangladesh</span>
                         </p>
                         <p className="w-max text-sm min-[250px]:text-base lg:text-xl flex items-center gap-2">
                             <FaPhoneAlt />
-                            <span>+8801973754077</span>
+                            <span>+24567891234</span>
                         </p>
                         <p className="w-max text-sm min-[250px]:text-base lg:text-xl flex items-center gap-2">
                             <IoLogoWhatsapp className="text-green-600 bg-white rounded-full" />
-                            <span>+8801973754077</span>
+                            <span>+24567891234</span>
                         </p>
                     </div>
                 </div>
