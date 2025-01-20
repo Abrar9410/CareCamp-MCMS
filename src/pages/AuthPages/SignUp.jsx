@@ -103,7 +103,7 @@ const SignUp = () => {
                     </div>
                     <div className="flex items-center gap-2">
                         <input type="checkbox" className="checkbox checkbox-xs outline-none border-black dark:border-white" required/>
-                        <p className="text-sm text-black dark:text-white">Accept our <Link>Terms & Conditions</Link></p>
+                        <p className="text-sm text-black dark:text-white">Accept our <Link to="/terms-of-service">Terms & Conditions</Link></p>
                     </div>
                     <div className="form-control gap-4 mt-4 items-center">
                         <p className="text-red-600">{errorMessage}</p>
