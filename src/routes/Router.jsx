@@ -8,12 +8,15 @@ import Contact from "../pages/PublicPages/Contact";
 import TermsOfService from "../pages/PublicPages/TermsOfService";
 import PrivacyPolicy from "../pages/PublicPages/PrivacyPolicy";
 import CookiePolicy from "../pages/PublicPages/CookiePolicy";
+import ErrorPage from "../pages/ErrorPage";
+import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
 
 
 const Router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -52,6 +55,11 @@ const Router = createBrowserRouter([
                 element: <SignUp></SignUp>
             },
         ]
+    },
+    {
+        path: "/dashboard",
+        element: <DashboardLayout></DashboardLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
     }
 ])
 

@@ -81,14 +81,14 @@ const Navbar = () => {
                                     <li>
                                         {user?.displayName}
                                     </li>
-                                    <li><Link>Dashboard</Link></li>
+                                    <li><Link to="/dashboard">Dashboard</Link></li>
                                     <li><button onClick={handleLogOut} className="w-full bg-red-600 text-white">Logout</button></li>
                                 </ul>
                             </div>:
                             <button
                                 onClick={()=>navigate("/login")}
                                 hidden={location.pathname === '/login' || location.pathname === '/signup'}
-                                className="bg-primary text-white text-xs min-[300px]:text-sm sm:text-base xl:text-lg w-max px-2 min-[320px]:py-1 min-[400px]:px-3 sm:px-4 sm:py-2 lg:px-5 xl:py-3 sm:font-semibold rounded-xl shadow-md hover:scale-105">
+                                className="bg-primary text-white text-xs min-[300px]:text-sm sm:text-base xl:text-lg w-max px-2 min-[320px]:py-1 min-[400px]:px-3 sm:px-4 sm:py-2 lg:px-5 xl:py-3 sm:font-semibold rounded-xl shadow-md hover:scale-105 outline-none">
                                 Join Us
                             </button>
                     }
