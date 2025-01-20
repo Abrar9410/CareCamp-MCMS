@@ -10,6 +10,8 @@ import PrivacyPolicy from "../pages/PublicPages/PrivacyPolicy";
 import CookiePolicy from "../pages/PublicPages/CookiePolicy";
 import ErrorPage from "../pages/ErrorPage";
 import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
+import Profile from "../pages/PrivatePages/SharedPages/Profile";
+import AddCamp from "../pages/PrivatePages/AdminPages/AddCamp";
 
 
 const Router = createBrowserRouter([
@@ -60,6 +62,20 @@ const Router = createBrowserRouter([
         path: "/dashboard",
         element: <DashboardLayout></DashboardLayout>,
         errorElement: <ErrorPage></ErrorPage>,
+        children: [
+            {
+                path: "/dashboard",
+                element: <Profile></Profile>
+            },
+            {
+                path: "/dashboard/profile",
+                element: <Profile></Profile>
+            },
+            {
+                path: "/dashboard/add-camp",
+                element: <AddCamp></AddCamp>
+            },
+        ]
     }
 ])
 
