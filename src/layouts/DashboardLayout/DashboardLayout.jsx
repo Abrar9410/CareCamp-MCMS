@@ -3,10 +3,11 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import ThemeToggler from "../../components/shared/ThemeToggler";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { FaRegUserCircle } from "react-icons/fa";
+import { FaHistory, FaRegUserCircle } from "react-icons/fa";
 import { FaHouseMedicalCircleCheck } from "react-icons/fa6";
-import { RiLogoutCircleLine } from "react-icons/ri";
+import { RiHomeGearFill, RiHomeGearLine, RiLogoutCircleLine } from "react-icons/ri";
 import { IoMdAnalytics } from "react-icons/io";
+import { MdAddHome, MdManageAccounts } from "react-icons/md";
 
 
 const DashboardLayout = () => {
@@ -33,7 +34,7 @@ const DashboardLayout = () => {
                     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="bg-black text-white text-xs min-[276px]:text-sm min-[400px]:text-base lg:text-lg min-h-full w-max lg:w-80 px-2 lg:px-6 pt-14 min-[400px]:pt-16 sm:pt-20 lg:pt-24 xl:pt-28 pb-4 lg:pb-6 flex flex-col justify-between">
                         {/* Sidebar content here */}
-                        <div className="space-y-2">
+                        <div className="space-y-3">
                             <li>
                                 <NavLink to="/dashboard/profile" className={({isActive})=>isActive? "flex items-center gap-2 text-primary bg-white px-2 rounded-md": "flex items-center gap-2 hover:bg-primary px-2 rounded-md"}>
                                     <FaRegUserCircle />
@@ -42,32 +43,37 @@ const DashboardLayout = () => {
                             </li>
                             <li>
                                 <NavLink to="/dashboard/add-camp" className={({ isActive }) => isActive ? "flex items-center gap-2 text-primary bg-white px-2 rounded-md" : "flex items-center gap-2 hover:bg-primary px-2 rounded-md"}>
-                                    <FaHouseMedicalCircleCheck />
+                                    <MdAddHome />
                                     Add a Camp
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to="/dashboard/manage-camps" className={({ isActive }) => isActive ? "flex items-center gap-2 text-primary bg-white px-2 rounded-md" : "flex items-center gap-2 hover:bg-primary px-2 rounded-md"}>
+                                    <RiHomeGearLine />
                                     Manage Camps
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to="/dashboard/manage-registered-camps" className={({isActive})=>isActive? "flex items-center gap-2 text-primary bg-white px-2 rounded-md": "flex items-center gap-2 hover:bg-primary px-2 rounded-md"}>
+                                    <RiHomeGearFill />
                                     Manage Registered Camps
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to="/dashboard/manage-participants" className={({isActive})=>isActive? "flex items-center gap-2 text-primary bg-white px-2 rounded-md": "flex items-center gap-2 hover:bg-primary px-2 rounded-md"}>
+                                    <MdManageAccounts />
                                     Manage Participants
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to="/dashboard/registered-camps" className={({isActive})=>isActive? "flex items-center gap-2 text-primary bg-white px-2 rounded-md": "flex items-center gap-2 hover:bg-primary px-2 rounded-md"}>
+                                    <FaHouseMedicalCircleCheck />
                                     Registered Camps
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to="/dashboard/payment-history" className={({isActive})=>isActive? "flex items-center gap-2 text-primary bg-white px-2 rounded-md": "flex items-center gap-2 hover:bg-primary px-2 rounded-md"}>
+                                    <FaHistory />
                                     Payment History
                                 </NavLink>
                             </li>
