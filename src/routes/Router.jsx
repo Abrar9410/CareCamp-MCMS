@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout/MainLayout";
 import Login from "../pages/AuthPages/Login";
 import SignUp from "../pages/AuthPages/SignUp";
@@ -66,8 +66,8 @@ const Router = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
-                path: "/dashboard",
-                element: <PrivateRoute><Profile></Profile></PrivateRoute>
+                index: true,
+                element: <Navigate to="/dashboard/profile" replace></Navigate>
             },
             {
                 path: "/dashboard/profile",

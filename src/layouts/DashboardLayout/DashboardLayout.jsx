@@ -58,7 +58,7 @@ const DashboardLayout = () => {
                         {/* Sidebar content here */}
                         <div className="space-y-5">
                             <li>
-                                <NavLink to="/dashboard" className={({ isActive }) => isActive ? "flex items-center gap-2 text-primary bg-white px-2 rounded-md" : "flex items-center gap-2 hover:bg-primary px-2 rounded-md"}>
+                                <NavLink to="/dashboard/profile" className={({ isActive }) => isActive ? "flex items-center gap-2 text-primary bg-white px-2 rounded-md" : "flex items-center gap-2 hover:bg-primary px-2 rounded-md"}>
                                     <FaRegUserCircle />
                                     Profile
                                 </NavLink>
