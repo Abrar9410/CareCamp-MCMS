@@ -13,6 +13,7 @@ import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
 import Profile from "../pages/PrivatePages/SharedPages/Profile";
 import AddCamp from "../pages/PrivatePages/AdminPages/AddCamp";
 import PrivateRoute from "./PrivateRoute";
+import UpdateProfile from "../pages/PrivatePages/SharedPages/UpdateProfile";
 
 
 const Router = createBrowserRouter([
@@ -71,6 +72,10 @@ const Router = createBrowserRouter([
             {
                 path: "/dashboard/profile",
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>
+            },
+            {
+                path: "/dashboard/profile/update-profile",
+                element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
             },
             {
                 path: "/dashboard/add-camp",

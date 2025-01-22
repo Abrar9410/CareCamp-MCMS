@@ -34,12 +34,11 @@ const SignUp = () => {
                     .then(async () => {
                         const userInfo = {
                             name,
-                            email
+                            email,
+                            image: profile.photoURL
                         };
                         const {data} = await axiosPublic.post('/users', userInfo);
-                        if (data.message || data) {
-                            console.log(data.message);
-                            console.log(data);
+                        if (data.message || data.insertedId) {
                             toast.success("Registration Successful!!!", {
                                 position: "top-center"
                             });
@@ -107,7 +106,7 @@ const SignUp = () => {
                     </div>
                     <div className="form-control gap-4 mt-4 items-center">
                         <p className="text-red-600">{errorMessage}</p>
-                        <button className="btn btn-primary w-full bg-primary text-white lg:text-lg">Sign Up</button>
+                            <button className="btn w-full bg-primary text-white lg:text-lg hover:bg-black dark:hover:bg-white dark:hover:text-primary outline-none">Sign Up</button>
                         <p className="text-center text-black dark:text-white">Already Have an Account? <Link to="/login" className="text-blue-500">Login</Link></p>
                         <GoogleLogin setErrorMessage={setErrorMessage}></GoogleLogin>
                     </div>

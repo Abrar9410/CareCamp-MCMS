@@ -12,9 +12,9 @@ const Navbar = () => {
     const location = useLocation();
 
     const navLinks = <>
-        <li><NavLink to="/" className={({isActive})=>isActive? "text-primary font-semibold": ""}>Home</NavLink></li>
-        <li><NavLink to="/camps" className={({isActive})=>isActive? "text-primary font-semibold": ""}>Available Camps</NavLink></li>
-        <li><NavLink to="/contact" className={({isActive})=>isActive? "text-primary font-semibold": ""}>Contact</NavLink></li>
+        <li><NavLink to="/" className={({isActive})=>isActive? "text-primary font-semibold": "hover:text-primary"}>Home</NavLink></li>
+        <li><NavLink to="/camps" className={({isActive})=>isActive? "text-primary font-semibold": "hover:text-primary"}>Available Camps</NavLink></li>
+        <li><NavLink to="/contact" className={({isActive})=>isActive? "text-primary font-semibold": "hover:text-primary"}>Contact</NavLink></li>
     </>
 
     const handleLogOut = () => {

@@ -70,7 +70,7 @@ const Login = () => {
                     </div>
                     <div className="form-control gap-4 mt-4 items-center">
                         <p className="text-red-600">{errorMessage}</p>
-                        <button className="btn btn-primary w-full bg-primary text-white lg:text-lg">Sign In</button>
+                        <button className="btn w-full bg-primary text-white lg:text-lg hover:bg-black dark:hover:bg-white dark:hover:text-primary outline-none">Sign In</button>
                         <p className="text-center text-black dark:text-white">Don't Have an Account? <Link to="/signup" className="text-blue-500">Sign Up</Link></p>
                         <GoogleLogin setErrorMessage={setErrorMessage}></GoogleLogin>
                     </div>
