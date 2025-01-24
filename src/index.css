@@ -11,3 +11,8 @@ body {
     margin: 0;
     overflow-y: scroll;
 }
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}

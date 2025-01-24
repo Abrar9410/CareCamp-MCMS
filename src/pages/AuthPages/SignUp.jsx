@@ -76,8 +76,8 @@ const SignUp = () => {
                         {errors.name?.type==='required'&& <span className="text-red-600">This field is required</span>}
                     </div>
                     <div className="form-control">
-                        <label className="label">
-                                <span className="font-semibold text-black dark:text-white">Select Image:</span>
+                        <label className="label text-black dark:text-white">
+                            <span className="font-semibold">Select Image:</span>
                         </label>
                         <input type="file" {...register("image")} className="text-black dark:text-white" accept="image/*" required/>
                     </div>

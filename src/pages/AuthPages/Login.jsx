@@ -49,17 +49,17 @@ const Login = () => {
                 <hr className="my-4"/>
                 <form onSubmit={handleSubmit(handleLogin)} className="px-5 flex flex-col gap-2">
                     <div className="form-control">
-                            <label className="label text-black dark:text-white">
+                        <label className="label text-black dark:text-white">
                             <span className="font-semibold">Email</span>
                         </label>
-                            <input type="email" placeholder="email" {...register("email", { required: true })} className="input input-bordered h-10 bg-black dark:bg-white text-white dark:text-black"/>
+                        <input type="email" placeholder="email" {...register("email", { required: true })} className="input input-bordered h-10 bg-black dark:bg-white text-white dark:text-black"/>
                         {errors.email?.type==='required'&& <span className="text-red-600">This field is required</span>}
                     </div>
                     <div className="form-control relative">
-                            <label className="label text-black dark:text-white">
+                        <label className="label text-black dark:text-white">
                             <span className="font-semibold">Password</span>
                         </label>
-                            <input type={showPassword ? "text" : "password"} placeholder="password" {...register("password", { required: true })} className="input input-bordered h-10 bg-black dark:bg-white text-white dark:text-black"/>
+                        <input type={showPassword ? "text" : "password"} placeholder="password" {...register("password", { required: true })} className="input input-bordered h-10 bg-black dark:bg-white text-white dark:text-black"/>
                         {errors.password?.type==='required'&& <span className="text-red-600">Enter your password</span>}
                         <button onClick={handleShowPassword} className="absolute right-3 max-[249px]:bottom-14 bottom-11">
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
