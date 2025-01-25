@@ -5,12 +5,13 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { FaHistory, FaRegUserCircle } from "react-icons/fa";
 import { FaHouseMedicalCircleCheck } from "react-icons/fa6";
-import { RiHomeGearFill, RiHomeGearLine, RiLogoutCircleLine } from "react-icons/ri";
+import { RiHomeGearFill, RiLogoutCircleLine } from "react-icons/ri";
 import { IoMdAnalytics } from "react-icons/io";
 import { MdAddHome, MdManageAccounts } from "react-icons/md";
 import useAdmin from "../../hooks/useAdmin";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { IoSettingsSharp } from "react-icons/io5";
 
 
 const DashboardLayout = () => {
@@ -74,7 +75,7 @@ const DashboardLayout = () => {
                                         </li>
                                         <li>
                                             <NavLink to="/dashboard/manage-camps" className={({ isActive }) => isActive ? "flex items-center gap-2 text-primary bg-white px-2 rounded-md" : "flex items-center gap-2 hover:bg-primary px-2 rounded-md"}>
-                                                <RiHomeGearLine />
+                                                <IoSettingsSharp />
                                                 Manage Camps
                                             </NavLink>
                                         </li>

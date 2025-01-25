@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 
 const Profile = () => {
@@ -10,6 +11,7 @@ const Profile = () => {
 
     return (
         <>
+            <Helmet><title>Profile | CareCamp</title></Helmet>
             <div className="font-bold max-[215px]:py-4 py-6 min-[300px]:py-8 min-[400px]:py-10">
                 <h2 className="text-center text-primary text-lg min-[300px]:text-xl min-[450px]:text-2xl sm:text-2xl md:text-3xl xl:text-4xl">
                     Welcome, {name.split(' ')[0]}!

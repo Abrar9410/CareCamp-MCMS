@@ -1,19 +1,56 @@
+import moment from "moment";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { MdDateRange } from "react-icons/md";
+import { uploadImage } from "../../../utilities/utilities";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const AddCamp = () => {
 
-    const { register, handleSubmit, formState: { errors }} = useForm();
-    const {errorMessage, setErrorMessage} = useState('');
+    const { register, handleSubmit, reset, formState: { errors }} = useForm();
+    const [errorMessage, setErrorMessage] = useState('');
+    const [uploading, setUploading] = useState(false)
+    const axiosSecure = useAxiosSecure();
 
     const handleAddCamp = async data => {
         setErrorMessage('');
+        setUploading(true);
+        const {title, image, location, schedule, fee, hpName, description} = data;
+        // console.log(title, image[0], location, , fee, hpName, description);
+        const date = moment(schedule).format('DD/MM/YYYY hh:mm A').slice(0,10);
+        const time = moment(schedule).format('DD/MM/YYYY hh:mm A').slice(11, 19);
+        const img = image[0];
+        const thumbnail = await uploadImage(img);
+        const camp = {
+            title,
+            thumbnail,
+            location,
+            date,
+            time,
+            fee,
+            hpName,
+            description
+        }
+        const res = await axiosSecure.post('/camps', camp);
+        if (res.data.insertedId) {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "New Camp has been added!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            reset();
+            setUploading(false);
+        }
     }
 
     return (
-        <div>
+        <>
+            <Helmet><title>Add Camp | CareCamp</title></Helmet>
             <div className="font-bold max-[215px]:py-4 py-6 min-[300px]:py-8 min-[400px]:py-10">
                 <h2 className="text-center text-primary text-lg min-[300px]:text-xl min-[450px]:text-2xl sm:text-2xl md:text-3xl xl:text-4xl">
                     Organize NEW Medical Camp
@@ -59,7 +96,7 @@ const AddCamp = () => {
                             <label className="label text-black dark:text-white">
                                 <span className="font-semibold">Fee</span>
                             </label>
-                            <input type="number" placeholder="Amount" {...register("fee", { required: true })} className="input input-bordered h-10 w-full bg-black dark:bg-white text-white dark:text-black" />
+                            <input type="number" placeholder="Amount" {...register("fee", { required: true })} className="input input-bordered h-10 w-full bg-black dark:bg-white text-white dark:text-black" min={0}/>
                             {errors.fee?.type === 'required' && <span className="text-red-600">You forgot to mention the Fee</span>}
                         </div>
                         <div className="form-control w-full">
@@ -67,7 +104,7 @@ const AddCamp = () => {
                                 <span className="font-semibold">Healthcare Professional</span>
                             </label>
                             <input type="text" placeholder="Name" {...register("hpName", { required: true })} className="input input-bordered h-10 w-full bg-black dark:bg-white text-white dark:text-black" />
-                            {errors.hpName?.type === 'required' && <span className="text-red-600">Please mention the name of Healthcare professional</span>}
+                            {errors.hpName?.type === 'required' && <span className="text-red-600">Please mention the name of Healthcare Professional</span>}
                         </div>
                     </div>
                     <div className="form-control w-full">
@@ -82,11 +119,17 @@ const AddCamp = () => {
                     </div>
                     <div className="form-control gap-4 mt-4 items-center">
                         <p className="text-red-600">{errorMessage}</p>
-                        <button className="btn w-full bg-green-500 text-white lg:text-lg hover:bg-green-500 hover:scale-105 outline-none border-none">Add Camp</button>
+                        <button className="btn w-full bg-green-500 text-white lg:text-lg hover:bg-green-500 hover:scale-105 outline-none border-none">
+                            {
+                                uploading?
+                                    <span className="loading loading-spinner loading-md"></span>:
+                                    <span>Add Camp</span>    
+                            }
+                        </button>
                     </div>
                 </form>
             </div>
-        </div>
+        </>
     );
 };
 
