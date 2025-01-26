@@ -74,7 +74,7 @@ const UpdateProfile = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="font-semibold text-black dark:text-white">Select Image: <span className="text-sm">(if you want to change)</span></span>
+                                <span className="font-semibold text-black dark:text-white">Select Image: (<span className="text-sm">if you want to change</span>)</span>
                         </label>
                         <input
                             type="file"

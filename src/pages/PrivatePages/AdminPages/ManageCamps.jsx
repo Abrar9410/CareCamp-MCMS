@@ -110,7 +110,7 @@ const ManageCamps = () => {
             sortable: false,
             cell: (row) => (
                 <div className="w-max mx-auto flex flex-col justify-center items-center gap-2">
-                    <Link to={`/update-camp/${row._id}`} className="w-max py-1 px-2 rounded-lg bg-green-500 text-white hover:scale-105">Update</Link>
+                    <Link to={`/dashboard/update-camp/${row._id}`} className="w-max py-1 px-2 rounded-lg bg-green-500 text-white hover:scale-105">Update</Link>
                     <button onClick={() => handleDelete(row._id)} className="w-max py-1 px-2 rounded-lg bg-red-500 text-black hover:scale-105">Delete</button>
                 </div>
             ),
