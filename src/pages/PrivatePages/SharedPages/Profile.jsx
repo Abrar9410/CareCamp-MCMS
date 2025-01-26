@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import Heading from "../../../components/shared/Heading";
 
 
 const Profile = () => {
@@ -12,11 +13,7 @@ const Profile = () => {
     return (
         <>
             <Helmet><title>Profile | CareCamp</title></Helmet>
-            <div className="font-bold max-[215px]:py-4 py-6 min-[300px]:py-8 min-[400px]:py-10">
-                <h2 className="text-center text-primary text-lg min-[300px]:text-xl min-[450px]:text-2xl sm:text-2xl md:text-3xl xl:text-4xl">
-                    Welcome, {name.split(' ')[0]}!
-                </h2>
-            </div>
+            <Heading title={`Welcome, ${name.split(' ')[0]}!`}></Heading>
             <div className="max-[215px]:min-h-[calc(100vh-300px)] min-[216px]:min-h-[calc(100vh-200px)] min-[300px]:min-h-[calc(100vh-220px)] min-[350px]:min-h-[calc(100vh-266px)] min-[400px]:min-h-[calc(100vh-276px)]  sm:min-h-[calc(100vh-300px)] xl:min-h-[calc(100vh-370px)] flex flex-col justify-center items-center">
                 <div className="w-full min-[400px]:w-11/12 sm:w-10/12 md:w-2/3 lg:w-3/4 xl:w-2/3 2xl:w-1/2 mx-auto flex flex-col justify-center items-center gap-3 min-[300px]:gap-5 sm:gap-10 p-2 min-[300px]:p-4 min-[450px]:p-6 sm:p-8 border-2 border-primary rounded-lg shadow-xl bg-primary/5 dark:bg-black">
                     <div className="w-14 h-14 min-[200px]:w-16 min-[200px]:h-16 min-[300px]:w-20 min-[300px]:h-20 min-[400px]:w-24 min-[400px]:h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 2xl:w-40 2xl:h-40 mx-auto border-2 border-primary rounded-lg shadow-lg bg-white">

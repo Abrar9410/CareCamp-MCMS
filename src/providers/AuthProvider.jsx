@@ -12,6 +12,7 @@ const AuthProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
     const [userEmail, setUserEmail] = useState('');
     console.log(loading, user);
+    const [isDarkMode, setIsDarkMode] = useState(window.matchMedia('(prefers-color-scheme: dark)').matches); //Temporary- For this app only
 
     // Google Sign-In
     const googleProvider = new GoogleAuthProvider();
@@ -122,7 +123,8 @@ const AuthProvider = ({children}) => {
         userEmail,
         setUserEmail,
         resetPassword,
-        logOut
+        logOut,
+        isDarkMode, setIsDarkMode   //Temporary- For this app only
     }
 
     return (

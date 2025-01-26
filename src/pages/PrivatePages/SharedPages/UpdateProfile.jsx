@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { uploadImage } from "../../../utilities/utilities";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Heading from "../../../components/shared/Heading";
+import { Helmet } from "react-helmet-async";
 
 
 const UpdateProfile = () => {
@@ -53,11 +55,8 @@ const UpdateProfile = () => {
 
     return (
         <>
-            <div className="font-bold max-[215px]:py-4 py-6 min-[300px]:py-8 min-[400px]:py-10">
-            <h2 className="text-center text-primary text-lg min-[300px]:text-xl min-[450px]:text-2xl sm:text-2xl md:text-3xl xl:text-4xl">
-                Update Your Profile
-            </h2>
-        </div>
+            <Helmet><title>Update-Profile | CareCamp</title></Helmet>
+            <Heading title="Update Your Profile"></Heading>
             <div className="max-[215px]:min-h-[calc(100vh-300px)] min-[216px]:min-h-[calc(100vh-200px)] min-[300px]:min-h-[calc(100vh-220px)] min-[350px]:min-h-[calc(100vh-266px)] min-[400px]:min-h-[calc(100vh-276px)]  sm:min-h-[calc(100vh-300px)] lg:min-h-[calc(100vh-320px)] flex flex-col justify-center items-center">
                 <div className="w-full min-[400px]:w-11/12 sm:w-10/12 md:w-2/3 lg:w-3/4 xl:w-2/3 2xl:w-1/2 mx-auto border border-base-200 p-1 min-[320px]:p-2 min-[360px]:p-3 min-[400px]:p-4 sm:p-8 bg-white dark:bg-black rounded-lg shadow-xl">
                 <form onSubmit={handleSubmit(handleUpdateProfile)} className="flex flex-col gap-2 max-[319px]:text-sm">

@@ -6,6 +6,7 @@ import { MdDateRange } from "react-icons/md";
 import { uploadImage } from "../../../utilities/utilities";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import Heading from "../../../components/shared/Heading";
 
 
 const AddCamp = () => {
@@ -30,7 +31,7 @@ const AddCamp = () => {
             location,
             date,
             time,
-            fee,
+            fee: parseInt(fee),
             hpName,
             description
         }
@@ -51,11 +52,7 @@ const AddCamp = () => {
     return (
         <>
             <Helmet><title>Add Camp | CareCamp</title></Helmet>
-            <div className="font-bold max-[215px]:py-4 py-6 min-[300px]:py-8 min-[400px]:py-10">
-                <h2 className="text-center text-primary text-lg min-[300px]:text-xl min-[450px]:text-2xl sm:text-2xl md:text-3xl xl:text-4xl">
-                    Organize NEW Medical Camp
-                </h2>
-            </div>
+            <Heading title="Organize NEW Medical Camp"></Heading>
             <div className="p-2 min-[300px]:p-4 min-[450px]:p-6 sm:p-8 bg-slate-100 dark:bg-black 2xl:w-11/12 mx-auto shadow-lg">
                 <form onSubmit={handleSubmit(handleAddCamp)} className="flex flex-col gap-3">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">

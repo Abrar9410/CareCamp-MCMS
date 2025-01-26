@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";  //Temporary- For this app only
 
 
 const ThemeToggler = () => {
 
     const [theme, setTheme] = useState(null);
+    const {setIsDarkMode} = useAuth();  //Temporary- For this app only
 
     // Set theme based on system preference or localStorage on initial load
     useEffect(() => {
@@ -12,6 +14,8 @@ const ThemeToggler = () => {
         if (storedTheme) {
             setTheme(storedTheme);
             document.documentElement.classList.add(storedTheme);
+            if (storedTheme === 'dark') setIsDarkMode(true);   //Temporary- For this app only
+            if (storedTheme === 'light') setIsDarkMode(false);   //Temporary- For this app only
         } else if (prefersDark) {
             setTheme('dark');
             document.documentElement.classList.add('dark');
@@ -19,6 +23,7 @@ const ThemeToggler = () => {
             setTheme('light');
             document.documentElement.classList.remove('dark');
             document.documentElement.classList.add('light');
+            setIsDarkMode(false);                              //Temporary- For this app only
         }
     }, []);
 
@@ -29,6 +34,7 @@ const ThemeToggler = () => {
         document.documentElement.classList.remove(theme);
         document.documentElement.classList.add(newTheme); 
         localStorage.setItem('theme', newTheme);
+        newTheme === 'dark' ? setIsDarkMode(true) : setIsDarkMode(false)   //Temporary- For this app only
     };
 
     if (theme===null) return null;
