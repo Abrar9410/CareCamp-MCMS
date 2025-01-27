@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Heading from "../../components/shared/Heading";
 import { FaPlus } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
+import JoinModal from "../../components/shared/JoinModal";
 
 
 const Camp = () => {
@@ -56,7 +57,7 @@ const Camp = () => {
                     <div className="flex flex-col justify-end items-center mt-8 sm:mt-10 md:mt-12 2xl:mt-36">
                         <button
                             disabled={!user}
-                            onClick={() => console.log(_id)}
+                            onClick={() => document.getElementById(`${_id}`).showModal()}
                             className="w-max flex justify-center items-center gap-1 rounded-lg px-4 py-2 bg-primary text-white text-lg font-semibold hover:scale-105 outline-none disabled:cursor-not-allowed disabled:bg-gray-400 disabled:hover:scale-100">
                             Join Camp
                             <FaPlus />
@@ -65,6 +66,7 @@ const Camp = () => {
                     </div>
                 </div>
             </div>
+            <JoinModal camp={camp}></JoinModal>
         </div>
     );
 };
