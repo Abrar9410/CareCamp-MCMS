@@ -53,7 +53,7 @@ const AddCamp = () => {
         <>
             <Helmet><title>Add Camp | CareCamp</title></Helmet>
             <Heading title="Organize NEW Medical Camp"></Heading>
-            <div className="p-2 min-[300px]:p-4 min-[450px]:p-6 sm:p-8 bg-slate-100 dark:bg-black 2xl:w-11/12 mx-auto shadow-lg">
+            <div className="p-2 min-[300px]:p-4 min-[450px]:p-6 sm:p-8 bg-slate-100 dark:bg-black 2xl:w-11/12 mx-auto shadow-lg mt-4 min-[400px]:mt-6 sm:mt-8 md:mt-10">
                 <form onSubmit={handleSubmit(handleAddCamp)} className="flex flex-col gap-3">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
                         <div className="form-control w-full">

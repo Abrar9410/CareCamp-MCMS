@@ -2,12 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosPublic } from "../utilities/utilities";
 
 
-const useCamps = () => {
+const useCamps = (limit='', search='') => {
 
-    const {data:camps = [], isPending, refetch} = useQuery({
-        queryKey: ['camps'],
+    const { data: camps = [], isPending, refetch} = useQuery({
+        queryKey: ['camps', limit, search],
         queryFn: async () => {
-            const { data } = await axiosPublic('/camps');
+            const { data } = await axiosPublic(`/camps?limit=${limit}&search=${search}`);
             return data;
         }
     })

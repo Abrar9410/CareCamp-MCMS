@@ -35,7 +35,7 @@ const Navbar = () => {
     return (
         <div className="sticky top-0 z-10 bg-opacity-30 backdrop-blur-md py-2 sm:py-4 shadow-md">
             <div className="w-11/12 md:w-10/12 mx-auto flex justify-between max-[249px]:items-start items-center">
-                <div className="flex items-center gap-1 min-[400px]:gap-2 sm:gap-3">
+                <div className="flex items-center gap-1 min-[400px]:gap-2 sm:gap-3 md:gap-0">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn-ghost md:hidden">
                             <svg

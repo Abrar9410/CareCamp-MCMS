@@ -17,6 +17,7 @@ import UpdateProfile from "../pages/PrivatePages/SharedPages/UpdateProfile";
 import AdminRoute from "./AdminRoute";
 import ManageCamps from "../pages/PrivatePages/AdminPages/ManageCamps";
 import UpdateCamp from "../pages/PrivatePages/AdminPages/UpdateCamp";
+import Camp from "../pages/PublicPages/Camp";
 
 
 const Router = createBrowserRouter([
@@ -34,8 +35,9 @@ const Router = createBrowserRouter([
                 element: <AvailableCamps></AvailableCamps>
             },
             {
-                path: "/camps/:id",
-                element: <AvailableCamps></AvailableCamps>
+                path: "/camp-details/:campId",
+                element: <Camp></Camp>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/camps/${params.campId}`)
             },
             {
                 path: "/contact",

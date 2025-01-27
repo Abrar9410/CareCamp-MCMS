@@ -149,6 +149,13 @@ const ManageCamps = () => {
                 textWrap: "wrap"
             },
         },
+        pagination: {
+            style: {
+                marginTop: "1rem",
+                backgroundColor: isDarkMode ? "gray" : "white",
+                color: isDarkMode ? "white" : "black",
+            },
+        }
     };
 
     if (isPending) return <Loading></Loading>;
@@ -156,7 +163,7 @@ const ManageCamps = () => {
     return (
         <div>
             <Heading title="Manage All Existing Camps"></Heading>
-            <div className="max-[215px]:min-h-[calc(100vh-300px)] min-[216px]:min-h-[calc(100vh-200px)] min-[300px]:min-h-[calc(100vh-220px)] min-[350px]:min-h-[calc(100vh-266px)] min-[400px]:min-h-[calc(100vh-276px)]  sm:min-h-[calc(100vh-300px)] lg:min-h-[calc(100vh-320px)] flex flex-col justify-center items-center mb-12">
+            <div className="max-[215px]:min-h-[calc(100vh-300px)] min-[216px]:min-h-[calc(100vh-200px)] min-[300px]:min-h-[calc(100vh-220px)] min-[350px]:min-h-[calc(100vh-266px)] min-[400px]:min-h-[calc(100vh-276px)]  sm:min-h-[calc(100vh-300px)] lg:min-h-[calc(100vh-320px)] flex flex-col justify-center items-center mt-4 min-[400px]:mt-6 sm:mt-8 md:mt-10">
                 <DataTable
                     columns={columns}
                     data={camps}
