@@ -13,6 +13,7 @@ const AuthProvider = ({children}) => {
     const [userEmail, setUserEmail] = useState('');
     console.log(loading, user);
     const [isDarkMode, setIsDarkMode] = useState(window.matchMedia('(prefers-color-scheme: dark)').matches); //Temporary- For this app only
+    const [userRegisteredCamps, setUserRegisteredCamps] = useState([]);    //Temporary- For this app only
 
     // Google Sign-In
     const googleProvider = new GoogleAuthProvider();
@@ -89,12 +90,19 @@ const AuthProvider = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, async currentUser => {
             setUser(currentUser);
             if (currentUser?.email) {
-                const { data } = await axiosPublic.post('/jwt',
+                await axiosPublic.post('/jwt',
                     {
                         email: currentUser?.email,
                     },
                     { withCredentials: true }
                 );
+                const {data} = await axiosPublic(`/user-registered-camps/${currentUser.email}`, {withCredentials: true});
+                if (data.length>0) {
+                    setUserRegisteredCamps(data);
+                }
+                else {
+                    setUserRegisteredCamps([]);
+                }
                 setLoading(false);
             }
             else {
@@ -102,6 +110,7 @@ const AuthProvider = ({children}) => {
                     '/logout',
                     { withCredentials: true }
                 )
+                setUserRegisteredCamps([]);
                 setLoading(false);
             }
         })
@@ -124,7 +133,8 @@ const AuthProvider = ({children}) => {
         setUserEmail,
         resetPassword,
         logOut,
-        isDarkMode, setIsDarkMode   //Temporary- For this app only
+        isDarkMode, setIsDarkMode,   //Temporary- For this app only
+        userRegisteredCamps, setUserRegisteredCamps   //Temporary- For this app only
     }
 
     return (

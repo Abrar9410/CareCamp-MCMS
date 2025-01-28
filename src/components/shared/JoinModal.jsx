@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 const JoinModal = ({ camp }) => {
 
     const { _id, title, location, hpName, fee } = camp;
-    const { user, loading } = useAuth();
+    const { user, loading, userRegisteredCamps, setUserRegisteredCamps } = useAuth();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [errorMessage, setErrorMessage] = useState('');
     const [uploading, setUploading] = useState(false);
@@ -33,6 +33,7 @@ const JoinModal = ({ camp }) => {
         };
         const res = await axiosSecure.post('/registered-camps', registeredCamp);
         if (res.data.insertedId) {
+            setUserRegisteredCamps([...userRegisteredCamps,registeredCamp]);
             setUploading(false);
             document.getElementById(`${_id}`).close();
             toast.success(`Successfully Registered in ${title}`, {
