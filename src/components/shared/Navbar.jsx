@@ -72,8 +72,8 @@ const Navbar = () => {
                     {
                         user?
                             <div className="dropdown dropdown-end">
-                                <div tabIndex={0} role="button" className="w-6 min-[300px]:w-8 sm:w-10 rounded-full">
-                                    <img src={user.photoURL} alt="user" className="w-full"/>
+                                <div tabIndex={0} role="button" className="w-6 h-6 min-[300px]:w-8 min-[300px]:h-8 sm:w-10 sm:h-10 rounded-full">
+                                    <img src={user.photoURL} alt="user" className="w-full h-full rounded-full object-cover"/>
                                 </div>
                                 <ul
                                     tabIndex={0}

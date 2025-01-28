@@ -20,7 +20,6 @@ const AddCamp = () => {
         setErrorMessage('');
         setUploading(true);
         const {title, image, location, schedule, fee, hpName, description} = data;
-        // console.log(title, image[0], location, , fee, hpName, description);
         const date = moment(schedule).format('DD/MM/YYYY hh:mm A').slice(0,10);
         const time = moment(schedule).format('DD/MM/YYYY hh:mm A').slice(11, 19);
         const img = image[0];

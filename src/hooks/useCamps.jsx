@@ -7,8 +7,8 @@ const useCamps = (limit='', search='') => {
     const { data: camps = [], isPending, refetch} = useQuery({
         queryKey: ['camps', limit, search],
         queryFn: async () => {
-            const { data } = await axiosPublic(`/camps?limit=${limit}&search=${search}`);
-            return data;
+            const res = await axiosPublic(`/camps?limit=${limit}&search=${search}`);
+            return res.data;
         }
     })
     return {camps, isPending, refetch};

@@ -19,7 +19,6 @@ const Contact = () => {
             )
             .then(
                 (result) => {
-                    console.log(result.text);
                     toast.success('Email sent successfully!', {
                         position: "top-center",
                         autoClose: 1500
@@ -27,7 +26,6 @@ const Contact = () => {
                     e.target.reset(); // Reset the form after submission
                 },
                 (error) => {
-                    console.log(error.text);
                     toast.error('Error sending email. Please try again later.', {
                         position: "top-center",
                         autoClose: 1500
