@@ -30,7 +30,7 @@ const ManageCamps = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const { data } = await axiosSecure.delete(`/delete-camp/${id}`);
-                if (data.deletedCount > 1) {
+                if (data.deletedCount > 0) {
                     toast.success('Camp deleted successfully!', {
                         position: "top-center",
                         autoClose: 1000

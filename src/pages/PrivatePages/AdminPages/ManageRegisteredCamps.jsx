@@ -28,8 +28,8 @@ const ManageRegisteredCamps = () => {
             cancelButtonText: "No, go back!"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const { data } = await axiosSecure.delete(``);
-                if (data.deletedCount > 1) {
+                const { data } = await axiosSecure.delete(`/delete-registration/${id}`);
+                if (data.deletedCount > 0) {
                     toast.info('Registration Canceled!', {
                         position: "top-center",
                         autoClose: 1000
@@ -82,9 +82,18 @@ const ManageRegisteredCamps = () => {
             maxWidth: "150px"
         },
         {
-            name: "Confirmation",
+            name: <div className="flex flex-col items-center">
+                <p className="text-center">Confirmation</p>
+                <p className="text-center text-xs">(click to confirm)</p>
+            </div>,
             selector: (row) => row.confirmation,
-            cell: (row) => (<p className="w-max mx-auto text-center">{row.confirmation}</p>),
+            cell: (row) => (
+                <div className="flex justify-center">
+                    <button className={`text-xs text-white w-max px-1 rounded-xl ${row.confirmation==='confirmed'? 'bg-green-500': 'bg-gray-400'}`}>
+                        {row.confirmation}
+                    </button>
+                </div>
+            ),
             sortable: true,
             minWidth: "129px",
             maxWidth: "150px"
@@ -152,7 +161,7 @@ const ManageRegisteredCamps = () => {
                     defaultValue={search}
                     ref={searchRef}
                     type="text"
-                    placeholder="Search by Camp Name, Location, Date or Doctor's Name"
+                    placeholder="Search by Camp Name, User Name, Payment status or Confirmation status"
                     className="input input-bordered h-12 w-full bg-white dark:bg-black text-black dark:text-white sm:text-sm lg:text-base"
                 />
                 <button
