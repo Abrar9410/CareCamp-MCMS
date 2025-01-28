@@ -53,7 +53,7 @@ const JoinModal = ({ camp }) => {
                             <label className="label text-black dark:text-white">
                                 <span className="font-semibold">Camp Name</span>
                             </label>
-                            <input defaultValue={title} readOnly type="text" placeholder="Camp Name" {...register("title", { required: true })} className="input input-bordered h-10 w-full bg-black dark:bg-white text-white dark:text-black" min={0} />
+                            <input defaultValue={title} readOnly type="text" placeholder="Camp Name" {...register("title", { required: true })} className="input input-bordered h-10 w-full bg-black dark:bg-white text-white dark:text-black" />
                         </div>
                         <div className="form-control w-full">
                             <label className="label text-black dark:text-white">
@@ -67,7 +67,7 @@ const JoinModal = ({ camp }) => {
                             <label className="label text-black dark:text-white">
                                 <span className="font-semibold">Location</span>
                             </label>
-                            <input defaultValue={location} readOnly type="text" placeholder="Location" {...register("location", { required: true })} className="input input-bordered h-10 w-full bg-black dark:bg-white text-white dark:text-black" min={0} />
+                            <input defaultValue={location} readOnly type="text" placeholder="Location" {...register("location", { required: true })} className="input input-bordered h-10 w-full bg-black dark:bg-white text-white dark:text-black" />
                         </div>
                         <div className="form-control w-full">
                             <label className="label text-black dark:text-white">
@@ -81,7 +81,7 @@ const JoinModal = ({ camp }) => {
                             <label className="label text-black dark:text-white">
                                 <span className="font-semibold">Participant Name</span>
                             </label>
-                            <input defaultValue={user?.displayName} readOnly type="text" placeholder="Your Name" {...register("participant_Name", { required: true })} className="input input-bordered h-10 w-full bg-black dark:bg-white text-white dark:text-black" min={0} />
+                            <input defaultValue={user?.displayName} readOnly type="text" placeholder="Your Name" {...register("participant_Name", { required: true })} className="input input-bordered h-10 w-full bg-black dark:bg-white text-white dark:text-black" />
                         </div>
                         <div className="form-control w-full">
                             <label className="label text-black dark:text-white">
