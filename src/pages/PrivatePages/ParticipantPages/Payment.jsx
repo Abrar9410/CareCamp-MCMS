@@ -10,13 +10,11 @@ import Loading from "../../../components/shared/Loading";
 const Payment = () => {
 
     const {id:registrationId} = useParams();
-    console.log(registrationId);
     const axiosSecure = useAxiosSecure();
     const {data: campInfo = {}, isPending} = useQuery({
         queryKey: ["campInfo", registrationId],
         queryFn: async () => {
             const {data} = await axiosSecure(`/user-registered-camp/${registrationId}`);
-            console.log(data);
             return data;
         }
     })
@@ -25,8 +23,6 @@ const Payment = () => {
     
     const {user} = useAuth();
     const navigate = useNavigate();
-
-    console.log(campInfo);
 
     const handlePay = async e => {
         e.preventDefault();
