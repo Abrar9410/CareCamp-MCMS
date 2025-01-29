@@ -1,7 +1,5 @@
 import Heading from "../../../components/shared/Heading";
 import DataTable from "react-data-table-component";
-import useCamps from "../../../hooks/useCamps";
-import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../components/shared/Loading";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -9,29 +7,39 @@ import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import { FaSearch } from "react-icons/fa";
 import { useRef, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
+import { RxArrowTopRight } from "react-icons/rx";
 
+const RegisteredCamps = () => {
 
-const ManageCamps = () => {
-
-    const { isDarkMode } = useAuth();
+    const { user, isDarkMode } = useAuth();
     const [search, setSearch] = useState('');
-    const { camps, isPending, refetch } = useCamps('', search, '');
     const searchRef = useRef();
     const axiosSecure = useAxiosSecure();
 
-    const handleDelete = id => {
+    const { data: userRegisteredCamps = [], isPending, refetch } = useQuery({
+        queryKey: ['userRegisteredCamps', search],
+        queryFn: async () => {
+            const res = await axiosSecure(`/user-registered-camps/${user.email}?search=${search}`);
+            return res.data;
+        }
+    })
+
+    const handleCancel = id => {
         Swal.fire({
-            title: "Are you sure you want to delete this Camp?",
+            title: "Are you sure you want to cancel this registration?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#d33",
             cancelButtonColor: "#3085d6",
-            confirmButtonText: "Yes, Delete!"
+            confirmButtonText: "Yes, Cancel!",
+            cancelButtonText: "No, go back!"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const { data } = await axiosSecure.delete(`/delete-camp/${id}`);
+                const { data } = await axiosSecure.delete(`/cancel-registration/${id}`);
                 if (data.deletedCount > 0) {
-                    toast.success('Camp deleted successfully!', {
+                    toast.info('Registration Canceled!', {
                         position: "top-center",
                         autoClose: 1000
                     })
@@ -44,78 +52,84 @@ const ManageCamps = () => {
     const columns = [
         {
             name: "Camp Name",
-            selector: (row) => row.title,
+            selector: (row) => row.campName,
             sortable: true,
-            cell: (row) => (
-                <div className="flex justify-start items-center gap-3 text-start font-semibold text-base p-2">
-                    <img src={row.thumbnail} alt="Blog_Thumbnail" className="w-12 h-12 rounded" />
-                    <span>{row.title}</span>
-                </div>
-            ),
-            minWidth: "245px",
-            maxWidth: "450px",
-        },
-        {
-            name: "Description",
-            selector: (row) => row.description,
-            sortable: true,
-            cell: (row) => <span className="px-1">{row.description}</span>,
-            minWidth: "130px",
-            maxWidth: "content"
+            cell: (row) => (<p className="w-max mx-auto text-center font-semibold text-sm p-2">{row.campName}</p>),
+            minWidth: "140px",
+            maxWidth: "320px",
         },
         {
             name: "Location",
             selector: (row) => row.location,
-            cell: (row) => <span className="w-max mx-auto text-center">{row.location}</span>,
+            cell: (row) => <span className="w-max mx-auto text-center text-sm">{row.location}</span>,
             sortable: true,
-            minWidth: "110px",
+            minWidth: "120px",
+            maxWidth: "270px",
+        },
+        {
+            name: "Your Name",
+            selector: (row) => row.participant_Name,
+            sortable: true,
+            cell: (row) => (<p className="w-max mx-auto text-center font-semibold text-sm p-2">{row.participant_Name}</p>),
+            minWidth: "120px",
             maxWidth: "200px",
         },
         {
-            name: "Date-Time",
-            selector: (row) => row.date,
-            sortable: true,
-            cell: (row) => (
-                <p className="w-max mx-auto flex flex-col items-center gap-1">
-                    <span>{row.date}</span>
-                    <span>{row.time}</span>
-                </p>
-            ),
-            minWidth: "115px",
-            maxWidth: "150px",
-        },
-        {
-            name: "Fee",
+            name: "Camp Fees",
             selector: (row) => row.fee,
             sortable: true,
-            cell: (row) => (<p className="w-max mx-auto text-center">{row.fee}</p>),
-            minWidth: "60px",
-            maxWidth: "80px"
-        },
-        {
-            name: "Health. Professional",
-            selector: (row) => row.hpName,
-            cell: (row) => (<p className="w-max mx-auto text-center">{row.hpName}</p>),
-            sortable: true,
-            minWidth: "129px",
+            cell: (row) => (<p className="w-max mx-auto text-center text-sm">{row.fee}</p>),
+            minWidth: "120px",
             maxWidth: "150px"
         },
         {
-            name: "Participants",
-            selector: (row) => row.participants,
+            name: "Payment Status",
+            selector: (row) => row.paymentStatus,
             sortable: true,
-            cell: (row) => (<p className="w-max mx-auto text-center">{row.participants}</p>),
-            minWidth: "100px",
-            maxWidth: "120px"
+            cell: (row) => (
+                <div className={`w-max mx-auto flex justify-center items-center ${row.paymentStatus === 'Unpaid' && 'gap-2'}`}>
+                    <p className={`text-center text-sm ${row.paymentStatus==='Paid' && 'bg-green-500 text-white px-2 py-1'}`}>
+                        {row.paymentStatus}
+                    </p>
+                    {
+                        row.paymentStatus === 'Unpaid' ?
+                            <Link to={`/dashboard/payment/${row._id}`} className="w-max flex justify-center items-center bg-green-500 px-1 shadow-md text-white hover:scale-105">
+                                <span>Pay</span>
+                                <RxArrowTopRight />
+                            </Link> :
+                            <></>
+                    }
+                </div>
+            ),
+            minWidth: "120px",
+            maxWidth: "200px"
+        },
+        {
+            name: <div className="flex flex-col items-center">
+                <p className="text-center">Confirmation</p>
+                <p className="text-center text-xs">(click to confirm)</p>
+            </div>,
+            selector: (row) => row.confirmationStatus,
+            cell: (row) => (
+                <p className={`text-sm text-white font-semibold w-max mx-auto px-2 py-1 ${row.confirmationStatus === 'Confirmed' ? 'bg-green-500' : 'bg-yellow-500'}`}>
+                    {row.confirmationStatus}
+                </p>
+            ),
+            sortable: true,
+            minWidth: "120px",
+            maxWidth: "170px"
         },
         {
             name: "Action",
             selector: (row) => row.fee,
             sortable: false,
             cell: (row) => (
-                <div className="w-max mx-auto flex flex-col justify-center items-center gap-2">
-                    <Link to={`/dashboard/update-camp/${row._id}`} className="w-max py-1 px-2 rounded-lg bg-green-500 text-white hover:scale-105">Update</Link>
-                    <button onClick={() => handleDelete(row._id)} className="w-max py-1 px-2 rounded-lg bg-red-500 text-black hover:scale-105">Delete</button>
+                <div className="w-max mx-auto flex flex-col justify-center items-center">
+                    {
+                        row.paymentStatus === "Paid" ?
+                            <button className="w-max py-1 px-2 rounded-lg bg-primary text-white hover:scale-105">Feedback</button> :
+                            <button onClick={() => handleCancel(row._id)} className="w-max py-1 px-2 rounded-lg bg-red-500 text-white hover:scale-105">Cancel</button>
+                    }
                 </div>
             ),
             minWidth: "100px",
@@ -166,13 +180,13 @@ const ManageCamps = () => {
 
     return (
         <div>
-            <Heading title="Manage All Existing Camps"></Heading>
+            <Heading title="Manage Your Registrations"></Heading>
             <div className="form-control w-full sm:w-3/4 xl:w-2/3 mx-auto my-4 min-[400px]:my-6 sm:my-8 md:my-10 relative">
                 <input
                     defaultValue={search}
                     ref={searchRef}
                     type="text"
-                    placeholder="Search by Camp Name, Location, Date or Doctor's Name"
+                    placeholder="Search by Camp Name, Location, Payment status or Confirmation status"
                     className="input input-bordered h-12 w-full bg-white dark:bg-black text-black dark:text-white sm:text-sm lg:text-base"
                 />
                 <button
@@ -184,7 +198,7 @@ const ManageCamps = () => {
             <div className="flex flex-col justify-center items-center">
                 <DataTable
                     columns={columns}
-                    data={camps}
+                    data={userRegisteredCamps}
                     customStyles={tableStyles}
                     defaultSortFieldId={1} // Optional: Set default sorting
                     pagination
@@ -194,4 +208,4 @@ const ManageCamps = () => {
     );
 };
 
-export default ManageCamps;
+export default RegisteredCamps;

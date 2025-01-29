@@ -119,7 +119,7 @@ const ManageRegisteredCamps = () => {
         },
         {
             name: "Cancel Reg.",
-            selector: (row) => row.time,
+            selector: (row) => row.fee,
             sortable: false,
             cell: (row) => (
                 <div className="w-max mx-auto flex flex-col justify-center items-center">
