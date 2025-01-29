@@ -10,7 +10,7 @@ This is a MERN stack project looking to create a Medical Camp Management System.
 
    * **User Authentication:** Secure JWT-based authentication system with Firebase, ensuring data privacy and access control.
    * **Role-based Dashboards:** Separate dashboards for participants and organizers, featuring distinct functionalities.
-      * Participants can register for camps, provide feedback, and view registration statuses, and also see their usage Analytics.
+      * Participants can register for camps, provide feedback, and view registration statuses, and also see their usage Analytics. 'Stripe' is used as payment gateway for a realistic experience.
       * Organizers can manage camp schedules, review participant data, and track feedback analytics.
    * **Dynamic Camp Search:** Users can search for camps by title, location, or healthcare professional with real-time query handling.
    * **Secure Participant Registration:** Smooth and secure registration process for medical camp participants.
@@ -22,6 +22,7 @@ This is a MERN stack project looking to create a Medical Camp Management System.
    * **Modern Technologies:** Some of the best modern technologies have been used to build this project featuring:
       * TanStack Query 
       * Axios
+      * Stripe -- payment gateway
       * React-hook-form
       * React-data-table
       * Recharts
