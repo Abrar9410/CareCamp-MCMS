@@ -105,10 +105,7 @@ const RegisteredCamps = () => {
             maxWidth: "200px"
         },
         {
-            name: <div className="flex flex-col items-center">
-                <p className="text-center">Confirmation</p>
-                <p className="text-center text-xs">(click to confirm)</p>
-            </div>,
+            name: "Confirmation",
             selector: (row) => row.confirmationStatus,
             cell: (row) => (
                 <p className={`text-sm text-white font-semibold w-max mx-auto px-2 py-1 ${row.confirmationStatus === 'Confirmed' ? 'bg-green-500' : 'bg-yellow-500'}`}>
