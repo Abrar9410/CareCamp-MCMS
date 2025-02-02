@@ -10,13 +10,11 @@ const JoinModal = ({ camp }) => {
 
     const { _id, title, location, hpName, fee } = camp;
     const { user, loading, userRegisteredCamps, setUserRegisteredCamps } = useAuth();
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const [errorMessage, setErrorMessage] = useState('');
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const [uploading, setUploading] = useState(false);
     const axiosSecure = useAxiosSecure();
 
     const handleJoinCamp = async data => {
-        setErrorMessage('');
         setUploading(true);
         const { title, fee, location, hpName, participant_Name, participant_Email, age, gender, phoneNumber, emergencyContact } = data;
         const registeredCamp = {

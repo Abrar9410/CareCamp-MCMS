@@ -10,6 +10,7 @@ import { useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { RxArrowTopRight } from "react-icons/rx";
+import FeedbackModal from "../../../components/shared/FeedbackModal";
 
 const RegisteredCamps = () => {
 
@@ -124,9 +125,10 @@ const RegisteredCamps = () => {
                 <div className="w-max mx-auto flex flex-col justify-center items-center">
                     {
                         row.paymentStatus === "Paid" ?
-                            <button className="w-max py-1 px-2 rounded-lg bg-primary text-white hover:scale-105">Feedback</button> :
-                            <button onClick={() => handleCancel(row._id)} className="w-max py-1 px-2 rounded-lg bg-red-500 text-white hover:scale-105">Cancel</button>
+                            <button onClick={() => document.getElementById(`${row._id}${row.campId}`).showModal()} className="w-max py-1 px-2 rounded-lg bg-primary text-white outline-none hover:scale-105">Feedback</button> :
+                            <button onClick={() => handleCancel(row._id)} className="w-max py-1 px-2 rounded-lg bg-red-500 text-white outline-none hover:scale-105">Cancel</button>
                     }
+                    <FeedbackModal campInfo={{ _id: row._id, campName: row.campName, campId: row.campId, location: row.location, hpName: row.hpName, participant_Name: row.participant_Name, participant_Email: row.participant_Email, fee: row.fee }}/>
                 </div>
             ),
             minWidth: "100px",
