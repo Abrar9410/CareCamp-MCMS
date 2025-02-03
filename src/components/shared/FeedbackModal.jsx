@@ -50,7 +50,7 @@ const FeedbackModal = ({campInfo}) => {
         <dialog id={_id+campId} className="w-11/12 sm:w-1/2 xl:w-1/3 mx-auto p-8 overflow-scroll bg-white dark:bg-black text-black dark:text-white z-20">
             <div className="flex flex-col items-center gap-2">
                 <h4 className="text-black dark:text-white text-center font-poppins font-semibold sm:text-lg md:text-xl">Share your experience!</h4>
-                <p className="max-sm:text-sm text-black dark:text-white text-center">Pease start by rating this camp.</p>
+                <p className="max-sm:text-sm text-black dark:text-white text-center">Please start by rating this camp.</p>
             </div>
             <form onSubmit={handleSubmit(handleFeedback)}>
                 <div className="flex flex-col items-center">

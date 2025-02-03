@@ -13,16 +13,19 @@ const Login = () => {
     const { setUser, loginWithEmailAndPassword, setUserEmail } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [signingIn, setSigningIn] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
     // const emailRef = useRef();
     
     const handleLogin = data => {
+        setSigningIn(true);
         const {email, password} = data;
         setErrorMessage('');
         loginWithEmailAndPassword(email, password)
             .then(result => {
                 setUser(result.user);
+                setSigningIn(false);
                 navigate(location?.state ? location.state : "/");
             })
             .catch(error => setErrorMessage(error.message));
@@ -70,7 +73,10 @@ const Login = () => {
                     </div>
                     <div className="form-control gap-4 mt-4 items-center">
                         <p className="text-red-600">{errorMessage}</p>
-                        <button className="btn w-full bg-primary text-white lg:text-lg hover:bg-black dark:hover:bg-white dark:hover:text-primary outline-none">Sign In</button>
+                        <button
+                            className="btn w-full bg-primary text-white lg:text-lg hover:bg-black dark:hover:bg-white dark:hover:text-primary outline-none">
+                            {signingIn ? <span className="loading loading-spinner loading-md"></span> : "Sign In"}
+                        </button>
                         <p className="text-center text-black dark:text-white">Don't Have an Account? <Link to="/signup" className="text-blue-500">Sign Up</Link></p>
                         <GoogleLogin setErrorMessage={setErrorMessage}></GoogleLogin>
                     </div>

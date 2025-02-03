@@ -125,7 +125,10 @@ const ManageRegisteredCamps = () => {
                 <div className="w-max mx-auto flex flex-col justify-center items-center">
                     <button
                         disabled={row.paymentStatus === 'Paid' && row.confirmationStatus === 'Confirmed'}
-                        onClick={() => handleCancel(row._id)} className="w-max py-1 px-2 rounded-lg bg-red-500 text-white hover:scale-105 disabled:bg-gray-600 disabled:text-gray-100 disabled:hover:cursor-not-allowed">cancel</button>
+                        onClick={() => handleCancel(row._id)}
+                        className="w-max py-1 px-2 rounded-lg bg-red-500 text-white hover:scale-105 disabled:bg-gray-600 disabled:text-gray-100 disabled:hover:cursor-not-allowed disabled:hover:scale-100">
+                            cancel
+                    </button>
                 </div>
             ),
             minWidth: "100px",

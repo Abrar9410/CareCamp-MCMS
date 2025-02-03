@@ -65,7 +65,7 @@ const RegisteredCamps = () => {
             cell: (row) => <span className="w-max mx-auto text-center text-sm">{row.location}</span>,
             sortable: true,
             minWidth: "120px",
-            maxWidth: "270px",
+            maxWidth: "290px",
         },
         {
             name: "Your Name",
@@ -73,7 +73,7 @@ const RegisteredCamps = () => {
             sortable: true,
             cell: (row) => (<p className="w-max mx-auto text-center font-semibold text-sm p-2">{row.participant_Name}</p>),
             minWidth: "120px",
-            maxWidth: "200px",
+            maxWidth: "210px",
         },
         {
             name: "Camp Fees",

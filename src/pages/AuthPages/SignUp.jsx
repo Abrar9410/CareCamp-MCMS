@@ -15,9 +15,11 @@ const SignUp = () => {
     const { setUser, setLoading, createAccount, updateUserProfile } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [registering, setRegistering] = useState(false);
     const navigate = useNavigate();
     
     const handleSignUp = async data => {
+        setRegistering(true);
         setErrorMessage('');
         const {name, image, email, password} = data;
         const img = image[0];
@@ -43,6 +45,7 @@ const SignUp = () => {
                                 position: "top-center"
                             });
                             setLoading(false);
+                            setRegistering(false);
                             navigate("/")
                         }
                     })
@@ -106,7 +109,10 @@ const SignUp = () => {
                     </div>
                     <div className="form-control gap-4 mt-4 items-center">
                         <p className="text-red-600">{errorMessage}</p>
-                            <button className="btn w-full bg-primary text-white lg:text-lg hover:bg-black dark:hover:bg-white dark:hover:text-primary outline-none">Sign Up</button>
+                        <button
+                            className="btn w-full bg-primary text-white lg:text-lg hover:bg-black dark:hover:bg-white dark:hover:text-primary outline-none">
+                            {registering ? <span className="loading loading-spinner loading-md"></span> : "Submit"}
+                        </button>
                         <p className="text-center text-black dark:text-white">Already Have an Account? <Link to="/login" className="text-blue-500">Login</Link></p>
                         <GoogleLogin setErrorMessage={setErrorMessage}></GoogleLogin>
                     </div>
