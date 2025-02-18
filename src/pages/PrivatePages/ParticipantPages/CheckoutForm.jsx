@@ -14,7 +14,6 @@ const CheckoutForm = ({campInfo}) => {
     const [errorMessage, setErrorMessage] = useState('');
     const axiosSecure = useAxiosSecure();
     const [clientSecret, setClientSecret] = useState('');
-    const [transactionId, setTransactionId] = useState('');
     const navigate = useNavigate();
     const stripe = useStripe();
     const elements = useElements();
@@ -70,14 +69,14 @@ const CheckoutForm = ({campInfo}) => {
         else {
             if (paymentIntent.status === 'succeeded') {
                 const date = new Date();
-                setTransactionId(paymentIntent.id);
                 const payment = {
-                    transactionId,
+                    transactionId: paymentIntent.id,
                     date_time: moment(date).format('DD/MM/YYYY hh:mm A'),
                     registrationId: id,
                     campId,
                     registeredCampName: campName,
                     location,
+                    fee,
                     hpName,
                     participant_Name,
                     email: user.email,
@@ -90,7 +89,7 @@ const CheckoutForm = ({campInfo}) => {
                 try {
                     if (data.insertedId) {
                         setInProgress(false);
-                        toast.success(`Payment Successful!! Transaction ID: ${transactionId}`, {
+                        toast.success(`Payment Successful!! Transaction ID: ${payment.transactionId}`, {
                             position: "top-center",
                             autoClose: 1500
                         });
