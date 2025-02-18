@@ -128,7 +128,7 @@ const RegisteredCamps = () => {
                             <button onClick={() => document.getElementById(`${row._id}${row.campId}`).showModal()} className="w-max py-1 px-2 rounded-lg bg-primary text-white outline-none hover:scale-105">Feedback</button> :
                             <button onClick={() => handleCancel(row._id)} className="w-max py-1 px-2 rounded-lg bg-red-500 text-white outline-none hover:scale-105">Cancel</button>
                     }
-                    <FeedbackModal campInfo={{ _id: row._id, campName: row.campName, campId: row.campId, location: row.location, hpName: row.hpName, participant_Name: row.participant_Name, participant_Email: row.participant_Email, fee: row.fee }}/>
+                    <FeedbackModal campInfo={{ _id: row._id, campName: row.campName, campId: row.campId, location: row.location, hpName: row.hpName, participant_Name: row.participant_Name, participant_Img: user.photoURL, participant_Email: row.participant_Email, fee: row.fee }}/>
                 </div>
             ),
             minWidth: "100px",

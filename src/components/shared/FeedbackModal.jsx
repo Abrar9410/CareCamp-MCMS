@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 const FeedbackModal = ({campInfo}) => {
 
-    const { _id, campName, campId, location, hpName, participant_Name, participant_Email, fee } = campInfo;
+    const { _id, campName, campId, location, hpName, participant_Name, participant_Img, participant_Email, fee } = campInfo;
     const {register,handleSubmit,control,formState: { errors }} = useForm({
         mode: 'onBlur',
         defaultValues: {
@@ -30,6 +30,7 @@ const FeedbackModal = ({campInfo}) => {
             fee,
             registrationId: _id,
             participant_Name,
+            participant_Img,
             participant_Email,
             rating,
             detailFeedback

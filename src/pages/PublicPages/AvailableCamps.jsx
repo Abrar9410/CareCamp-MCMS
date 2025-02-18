@@ -82,21 +82,21 @@ const AvailableCamps = () => {
                                 </p>
                             </div>
                             <div className="flex flex-col items-start sm:flex-row sm:items-center gap-3 sm:gap-0 md:gap-1 max-[286px]:text-xs max-[400px]:text-sm md:text-xs min-[900px]:text-sm text-black dark:text-white">
-                                <p className="sm:w-9/12 md:w-[67%] flex items-center gap-2">
+                                <p className="sm:w-9/12 md:w-[67%] flex items-center gap-2 md:gap-1">
                                     <FaLocationDot />
                                     <span>{camp.location}</span>
                                 </p>
-                                <p className="flex items-center gap-2">
+                                <p className="flex items-center gap-2 md:gap-1">
                                     <IoIosPeople className="max-[286px]:text-sm sm:text-lg" />
                                     <span>{camp.participants}</span>
                                 </p>
                             </div>
                             <div className="flex flex-col items-start sm:flex-row sm:items-center gap-3 sm:gap-0 md:gap-1 max-[286px]:text-xs max-[400px]:text-sm md:text-xs min-[900px]:text-sm text-black dark:text-white">
-                                <p className="sm:w-9/12 md:w-[67%] flex items-center gap-2">
+                                <p className="sm:w-9/12 md:w-[67%] flex items-center gap-2 md:gap-1">
                                     <FaUserDoctor />
                                     <span>{camp.hpName}</span>
                                 </p>
-                                <p className="flex items-center gap-2">
+                                <p className="flex items-center gap-2 md:gap-1">
                                     <TbCoinTakaFilled className="max-[286px]:text-sm sm:text-lg" />
                                     <span>{camp.fee}</span>
                                 </p>
