@@ -24,6 +24,11 @@ const ManageParticipants = () => {
         }
     })
 
+    const handleSendEmail = () => {
+        const link = "mail.google.com";
+        window.open(`//${link}`, "_blank");
+    }
+
     const handleDeleteUser = id => {
         Swal.fire({
             title: "Are you sure you want to delete this User?",
@@ -79,7 +84,7 @@ const ManageParticipants = () => {
             sortable: false,
             cell: (row) => (
                 <div className="w-max mx-auto flex flex-col justify-center items-center gap-2">
-                    <button className="w-max py-1 px-2 rounded-lg bg-primary text-white hover:scale-105">Send Email</button>
+                    <button onClick={handleSendEmail} className="w-max py-1 px-2 rounded-lg bg-primary text-white hover:scale-105">Send Email</button>
                     <button onClick={() => handleDeleteUser(row._id)} className="w-max py-1 px-2 rounded-lg bg-red-500 text-black hover:scale-105">Delete</button>
                 </div>
             ),
