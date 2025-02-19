@@ -2,13 +2,23 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import Heading from "../../../components/shared/Heading";
+import { toast } from "react-toastify";
 
 
 const Profile = () => {
 
-    const { user } = useAuth();
+    const { user, setUserEmail } = useAuth();
     const { photoURL: photo, displayName: name, email } = user;
     const navigate = useNavigate();
+
+    const handleResetPassword = () => {
+        // setUserEmail(user.email);
+        // navigate('/reset-password');
+        toast.error('This functionality is currently disabled to let users use Demo credentials for the time being!', {
+            position: "top-center",
+            autoClose: 3000
+        });
+    }
 
     return (
         <>
@@ -35,7 +45,9 @@ const Profile = () => {
                             className="w-max px-3 py-1 bg-green-500 text-white text-xs min-[200px]:text-sm min-[300px]:text-base rounded-xl outline-none hover:scale-105">
                             Update Profile
                         </button>
-                        <button className="w-max px-3 py-1 bg-green-500 text-white text-xs min-[200px]:text-sm min-[300px]:text-base rounded-xl outline-none hover:scale-105">
+                        <button
+                            onClick={handleResetPassword}
+                            className="w-max px-3 py-1 bg-green-500 text-white text-xs min-[200px]:text-sm min-[300px]:text-base rounded-xl outline-none hover:scale-105">
                             Reset Password
                         </button>
                     </div>

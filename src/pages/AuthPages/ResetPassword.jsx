@@ -37,7 +37,7 @@ const ResetPassword = () => {
                         type="email"
                         name="email"
                         defaultValue={userEmail}
-                        className="input input-bordered input-md" required/>    
+                        className="input input-bordered input-md bg-black dark:bg-white text-white dark:text-black" required/>    
                 </div>
                 <p className="text-red-600">{errorMessage}</p>
                 <input type="submit" value="Reset Password" className="btn w-full bg-gray-700 text-white lg:text-lg hover:bg-green-500 outline-none" />

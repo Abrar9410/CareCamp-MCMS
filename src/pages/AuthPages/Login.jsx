@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import GoogleLogin from "./GoogleLogin";
+import { toast } from "react-toastify";
 
 
 const Login = () => {
@@ -26,6 +27,7 @@ const Login = () => {
             .then(result => {
                 setUser(result.user);
                 setSigningIn(false);
+                toast.success('Login Successful!', {autoClose: 1000});
                 navigate(location?.state ? location.state : "/");
             })
             .catch(error => setErrorMessage(error.message));
@@ -37,8 +39,13 @@ const Login = () => {
     }
 
     const handleForgotPassword = () => {
-        setUserEmail(emailRef.current.value);
-        navigate("/reset-password");
+        // setUserEmail(emailRef.current.value);
+        // navigate("/reset-password");
+        // ref = { emailRef }   //This line will go into email input field
+        toast.error('This functionality is currently disabled to let users use Demo credentials for the time being!', {
+            position: "top-center",
+            autoClose: 3000
+        });
     }
 
     return (
@@ -54,7 +61,7 @@ const Login = () => {
                         <label className="label text-black dark:text-white">
                             <span className="font-semibold">Email</span>
                         </label>
-                            <input type="email" placeholder="email" {...register("email", { required: true })} ref={emailRef} className="input input-bordered h-10 bg-black dark:bg-white text-white dark:text-black"/>
+                        <input type="email" placeholder="email" {...register("email", { required: true })} className="input input-bordered h-10 bg-black dark:bg-white text-white dark:text-black"/>
                         {errors.email?.type==='required'&& <span className="text-red-600">This field is required</span>}
                     </div>
                     <div className="form-control relative">
