@@ -11,6 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { RxArrowTopRight } from "react-icons/rx";
 import FeedbackModal from "../../../components/shared/FeedbackModal";
+import { Helmet } from "react-helmet-async";
 
 const RegisteredCamps = () => {
 
@@ -178,7 +179,8 @@ const RegisteredCamps = () => {
     if (isPending) return <Loading></Loading>;
 
     return (
-        <div>
+        <>
+            <Helmet><title>Registered Camps | CareCamp</title></Helmet>
             <Heading title="Manage Your Registrations"></Heading>
             <div className="form-control w-full sm:w-3/4 xl:w-2/3 mx-auto my-4 min-[400px]:my-6 sm:my-8 md:my-10 relative">
                 <input
@@ -203,7 +205,7 @@ const RegisteredCamps = () => {
                     pagination
                 />
             </div>
-        </div>
+        </>
     );
 };
 

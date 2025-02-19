@@ -11,7 +11,6 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [userEmail, setUserEmail] = useState('');
-    console.log(loading, user);
     const [isDarkMode, setIsDarkMode] = useState(window.matchMedia('(prefers-color-scheme: dark)').matches); //Temporary- For this app only
     const [userRegisteredCamps, setUserRegisteredCamps] = useState([]);    //Temporary- For this app only
 
