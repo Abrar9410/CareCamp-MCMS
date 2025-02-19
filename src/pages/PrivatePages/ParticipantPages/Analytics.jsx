@@ -35,7 +35,7 @@ const Analytics = () => {
     return (
         <>
             <Helmet><title>Analytics | CareCamp</title></Helmet>
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mt-8 mb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mt-8 mb-20">
                 <div className="flex flex-col items-center gap-2 p-8 rounded-xl shadow-lg bg-green-600 text-black dark:text-white">
                     <p className="text-center text-lg md:text-xl font-semibold">Total Camps Attended</p>
                     <p className="text-center text-3xl font-bold">{totalCampsAttended || 0}</p>

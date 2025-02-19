@@ -16,7 +16,7 @@ const Login = () => {
     const [signingIn, setSigningIn] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-    // const emailRef = useRef();
+    const emailRef = useRef();
     
     const handleLogin = data => {
         setSigningIn(true);
@@ -36,11 +36,10 @@ const Login = () => {
         setShowPassword(!showPassword);
     }
 
-    // const handleForgotPassword = () => {
-    //     setUserEmail(emailRef.current.value);
-    //     navigate("/reset-password");
-    //     // ref = { emailRef }; This line will go into email field
-    // }
+    const handleForgotPassword = () => {
+        setUserEmail(emailRef.current.value);
+        navigate("/reset-password");
+    }
 
     return (
         <>
@@ -55,7 +54,7 @@ const Login = () => {
                         <label className="label text-black dark:text-white">
                             <span className="font-semibold">Email</span>
                         </label>
-                        <input type="email" placeholder="email" {...register("email", { required: true })} className="input input-bordered h-10 bg-black dark:bg-white text-white dark:text-black"/>
+                            <input type="email" placeholder="email" {...register("email", { required: true })} ref={emailRef} className="input input-bordered h-10 bg-black dark:bg-white text-white dark:text-black"/>
                         {errors.email?.type==='required'&& <span className="text-red-600">This field is required</span>}
                     </div>
                     <div className="form-control relative">
@@ -67,7 +66,7 @@ const Login = () => {
                         <button onClick={handleShowPassword} className="absolute right-3 max-[249px]:bottom-14 bottom-11">
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
-                        <label className="label">
+                        <label onClick={handleForgotPassword} className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
                     </div>

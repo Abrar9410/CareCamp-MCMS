@@ -23,6 +23,7 @@ import RegisteredCamps from "../pages/PrivatePages/ParticipantPages/RegisteredCa
 import Payment from "../pages/PrivatePages/ParticipantPages/Payment";
 import PaymentHistory from "../pages/PrivatePages/ParticipantPages/PaymentHistory";
 import Analytics from "../pages/PrivatePages/ParticipantPages/Analytics";
+import ResetPassword from "../pages/AuthPages/ResetPassword";
 
 
 const Router = createBrowserRouter([
@@ -67,6 +68,10 @@ const Router = createBrowserRouter([
             {
                 path: "/signup",
                 element: <SignUp></SignUp>
+            },
+            {
+                path: "/reset-password",
+                element: <ResetPassword></ResetPassword>
             },
         ]
     },
