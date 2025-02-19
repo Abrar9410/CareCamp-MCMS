@@ -58,23 +58,20 @@ const ManageParticipants = () => {
                 </div>
             ),
             minWidth: "245px",
-            maxWidth: "450px",
         },
         {
             name: "Email",
             selector: (row) => row.email,
             sortable: true,
-            cell: (row) => <span className="px-1">{row.email}</span>,
+            cell: (row) => <p className="w-max mx-auto text-center text-sm">{row.email}</p>,
             minWidth: "130px",
-            maxWidth: "content"
         },
         {
             name: "Role",
             selector: (row) => row.role,
             sortable: true,
-            cell: (row) => (<p className="w-max mx-auto text-center">{row.role}</p>),
+            cell: (row) => (<p className="w-max mx-auto text-center text-sm">{row.role}</p>),
             minWidth: "60px",
-            maxWidth: "80px"
         },
         {
             name: "Action",
@@ -82,12 +79,11 @@ const ManageParticipants = () => {
             sortable: false,
             cell: (row) => (
                 <div className="w-max mx-auto flex flex-col justify-center items-center gap-2">
-                    <button className="w-max py-1 px-2 rounded-lg bg-primary text-white hover:scale-105">Update</button>
+                    <button className="w-max py-1 px-2 rounded-lg bg-primary text-white hover:scale-105">Send Email</button>
                     <button onClick={() => handleDeleteUser(row._id)} className="w-max py-1 px-2 rounded-lg bg-red-500 text-black hover:scale-105">Delete</button>
                 </div>
             ),
             minWidth: "100px",
-            maxWidth: "120px"
         },
     ];
 
